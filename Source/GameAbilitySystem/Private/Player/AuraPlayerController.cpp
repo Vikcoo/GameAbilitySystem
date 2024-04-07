@@ -5,6 +5,7 @@
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
+	
 }
 
 void AAuraPlayerController::BeginPlay()
