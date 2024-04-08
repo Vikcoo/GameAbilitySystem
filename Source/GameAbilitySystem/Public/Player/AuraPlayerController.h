@@ -29,6 +29,7 @@ private:
 	void Move(const FInputActionValue& InputActionValue);
 	void CursorTrace();
 
+	//如何使用接口的安全指针
 	IEnemyInterface* LastActor;
 	IEnemyInterface* ThisActor;
 };
