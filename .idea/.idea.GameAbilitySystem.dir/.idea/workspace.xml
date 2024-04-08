@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7682e879-9423-4105-819d-2bfda5e117f1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameAbilitySystem.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameAbilitySystem.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/UI/ProgressBar/WBP_GlobeProgressBar.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/StartMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/StartMap.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712559144032</updated>
       <workItem from="1712559145287" duration="4155000" />
-      <workItem from="1712563428430" duration="2475000" />
+      <workItem from="1712563428430" duration="3406000" />
     </task>
     <servers />
   </component>
