@@ -20,6 +20,6 @@ class GAMEABILITYSYSTEM_API IEnemyInterface
 {
 	GENERATED_BODY()
 public:
-	virtual void Highlight() = 0;
-	virtual void UnHighlight() = 0;
+	virtual void HighlightActor() = 0;
+	virtual void UnHighlightActor() = 0;
 };

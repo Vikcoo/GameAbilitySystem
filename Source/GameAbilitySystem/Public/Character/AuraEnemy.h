@@ -15,6 +15,7 @@ class GAMEABILITYSYSTEM_API AAuraEnemy : public AAuraCharacterBase,public IEnemy
 {
 	GENERATED_BODY()
 public:
-	virtual void Highlight() override;
-	virtual void UnHighlight() override;
+	AAuraEnemy();
+	virtual void HighlightActor() override;
+	virtual void UnHighlightActor() override;
 };

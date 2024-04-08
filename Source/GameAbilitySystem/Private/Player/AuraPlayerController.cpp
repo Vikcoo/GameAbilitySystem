@@ -1,10 +1,66 @@
 // Copyright yu kai
 
+#include "EnhancedInputComponent.h"
 #include "Player/AuraPlayerController.h"
+#include "Interaction/EnemyInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
+	LastActor = nullptr;
+	ThisActor = nullptr;
+}
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	CursorTrace();
+}
+
+void AAuraPlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility,false,CursorHit);
+	if (!CursorHit.bBlockingHit) return;
+
+	LastActor = ThisActor;
+	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+
+	if (LastActor == nullptr)
+	{
+		if (ThisActor != nullptr)
+		{
+			//case B
+			ThisActor->HighlightActor();
+		}
+		else
+		{
+			//case A
+			//Do nothing
+		}
+	}
+	else
+	{
+		if (ThisActor == nullptr)
+		{
+			//case C
+			LastActor->UnHighlightActor();
+		}
+		else
+		{
+			if (LastActor != ThisActor)
+			{
+				//case D
+				LastActor->UnHighlightActor();
+				ThisActor->HighlightActor();
+			}
+			else
+			{
+				//case = E
+				//Do nothing
+			}
+		}
+	}
 	
 }
 
@@ -40,12 +96,12 @@ void AAuraPlayerController::SetupInputComponent()
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
-	//获取方向  ？？只能说很不直观
+	//获取方向  ？？只能说很不直观 我的评价是不如unity
 	const FVector2d InputAxisVector =  InputActionValue.Get<FVector2d>();
 	const FRotator Rotation = GetControlRotation();
 	const FRotator YawRotation = FRotator(0, Rotation.Yaw, 0);
-	FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-	FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+	FVector const ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+	FVector const RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
 	//将方向 和 倍率 输入    倍率可以控制正负
 	if (APawn* ControlledPawn = GetPawn<APawn>())
@@ -54,3 +110,5 @@ void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 		ControlledPawn->AddMovementInput(RightDirection,InputAxisVector.X);
 	}
 }
+
+
