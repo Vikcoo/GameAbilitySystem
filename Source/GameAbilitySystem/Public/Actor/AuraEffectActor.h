@@ -37,6 +37,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GamePlayEffectClass);
 
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "Effects")
+	float ActorLevel = 1.f;
+	
 	bool bDestroyOnEffectRemoval = false;
 
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
@@ -64,4 +67,6 @@ protected:
 	EEffectApplicationPolicy InfiniteEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "Effects")
 	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEndOverlap;
+
+	
 };
