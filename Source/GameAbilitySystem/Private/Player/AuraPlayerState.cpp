@@ -10,7 +10,7 @@ AAuraPlayerState::AAuraPlayerState()
 {
 	//网络更新频率  多人相关
 	NetUpdateFrequency = 100.f;
-	//ASC
+	//配置ASC
 	AbilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
@@ -20,4 +20,9 @@ AAuraPlayerState::AAuraPlayerState()
 UAbilitySystemComponent* AAuraPlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+UAttributeSet* AAuraPlayerState::GetAttributeSet()
+{
+	return  AttributeSet;
 }

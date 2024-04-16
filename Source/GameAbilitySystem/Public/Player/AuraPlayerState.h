@@ -17,11 +17,15 @@ class GAMEABILITYSYSTEM_API AAuraPlayerState : public APlayerState, public IAbil
 	GENERATED_BODY()
 public:
 	AAuraPlayerState();
+	//重写IAbilitySystemInterface的GetAbilitySystemComponent方法，获取ASC
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	virtual UAttributeSet* GetAttributeSet() const { return AttributeSet;};
+	//AS没有接口不能重写 自己写 获取AS
+	virtual UAttributeSet* GetAttributeSet();
 protected:
+	//PS的ASC
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
+	//PS的AS
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAttributeSet> AttributeSet;
 };
